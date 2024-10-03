@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Amorosa - Contacto</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* Estilos del modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Posicionamiento */
+            z-index: 1; /* Por encima del contenido */
+            left: 0;
+            top: 0;
+            width: 100%; /* Ancho completo */
+            height: 100%; /* Alto completo */
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* Centrando */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Ancho del contenido */
+        }
+
+        .close {
+            color: #aaa; /* Color del botón de cerrar */
+            float: right; /* A la derecha */
+            font-size: 28px; /* Tamaño */
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black; /* Color al pasar el ratón */
+            text-decoration: none; /* Sin subrayado */
+            cursor: pointer; /* Mano */
+        }
+
+        /* Estilo para los botones */
+        .button-container {
+            position: relative; /* Para que los botones se posicionen de forma relativa */
+            margin-top: 20px; /* Espacio superior */
+        }
+
+        button {
+            margin: 5px; /* Margen entre botones */
+            padding: 10px 20px; /* Relleno de los botones */
+            font-size: 16px; /* Tamaño de fuente */
+            cursor: pointer; /* Mano al pasar */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados */
+            background-color: #f44336; /* Color de fondo */
+            color: white; /* Color de texto */
+            position: relative; /* Necesario para el movimiento */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">03-03-2024</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Nota</a></li>
+            <li><a href="historia.html">Historia</a></li>
+            <li><a href="pregunta.html">¿?</a></li>
+            <li><a href="teQuiero.html">🤍</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="welcome">
+    <h2>¿Te gustaría construir más recuerdos conmigo?</h2>
+    <div class="button-container">
+        <button id="yesButton">Sí</button>
+        <button id="noButton">No</button>
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>¡Increíble!</h2>
+        <p>¡Qué emoción saber que deseas crear más recuerdos juntos! 🎉 Estoy emocionado por cada momento que podamos
+            compartir y por la posibilidad de construir una conexión única. 🥳</p>
+
+        <p>Estoy muy agradecido de que me permitas ser parte de tu vida y de explorar lo que podemos vivir juntos.
+            ¡Estoy listo para hacer que cada ocasión sea memorable y divertida!</p>
+
+        <p>Una flor para ti!</p>
+        <div style="width: 100%; justify-content: center; text-align: center">
+            <img src="flor.JPG" alt="" style="width:50%; margin: auto">
+        </div>
+
+        <p>Y lo mejor es que sé que, si ambos ponemos de nuestra parte, esta conexión será aún más especial. Porque
+            cuando los dos nos esforzamos, ¡lo que podemos lograr juntos es realmente increíble! 🌟</p>
+    </div>
+</div>
+
+
+<script>
+    // Obtener elementos
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+    const modal = document.getElementById("myModal");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    // Evento para el botón "Sí"
+    yesButton.onclick = function () {
+        modal.style.display = "block"; // Mostrar modal
+    }
+
+    // Evento para el botón "No"
+    noButton.onclick = function () {
+        // Calcular el ancho y alto de la ventana
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // Calcular nuevas coordenadas aleatorias dentro de la ventana
+        const randomX = Math.random() * (windowWidth - noButton.offsetWidth);
+        const randomY = Math.random() * (windowHeight - noButton.offsetHeight);
+
+        // Asignar nueva posición
+        noButton.style.position = "fixed"; // Cambiar a posición fija
+        noButton.style.left = `${randomX}px`; // Asignar nueva posición X
+        noButton.style.top = `${randomY}px`; // Asignar nueva posición Y
+    }
+
+    // Evento para cerrar el modal
+    closeBtn.onclick = function () {
+        modal.style.display = "none"; // Ocultar modal
+    }
+
+    // Cerrar el modal si se hace clic fuera de él
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none"; // Ocultar modal
+        }
+    }
+</script>
+</body>
+</html>
